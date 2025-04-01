@@ -8,12 +8,14 @@
 </head>
 <body>
     <div class="container">
-        <h1>Birthday List</h1>
-        <div id="birthday-list"></div>
-        
-        <button onclick="window.location.href='index.html';">Back to Home</button>
+        <h2>View Birthdays</h2>
+        <ul id="birthdayList"></ul>
+        <a href="index.html">Go Back to Home</a>
     </div>
-
     <script src="script.js"></script>
+    <script>
+        // When this page loads, display the birthdays
+        window.onload = showBirthdays;
+    </script>
 </body>
 </html>
