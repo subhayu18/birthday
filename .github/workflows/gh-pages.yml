@@ -1,0 +1,31 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Trigger deploy when there's a push to the 'main' branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # Using the latest version of Ubuntu
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # Checks out your code so GitHub Actions can access it
+
+      - name: Set up Node.js (optional, if you're using Node.js for build)
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Set Node.js version if needed (skip if not needed)
+
+      - name: Build project (optional, if you need a build step)
+        run: |
+          npm install   # Install any dependencies (if you have a package.json)
+          npm run build  # Build your project (only if you need it)
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4  # GitHub Pages deployment action
+        with:
+          branch: gh-pages  # Deploy to the gh-pages branch (or another if you prefer)
+          folder: build  # Folder to deploy (e.g., 'build' for React, or 'docs' for Jekyll)
+          token: ${{ secrets.GITHUB_TOKEN }}  # Token to authenticate the action
