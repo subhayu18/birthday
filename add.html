@@ -8,21 +8,14 @@
 </head>
 <body>
     <div class="container">
-        <h1>Add a Birthday</h1>
-        <form id="birthday-form">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required><br><br>
-            
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" name="dob" required><br><br>
-            
-            <label for="relation">Relation:</label>
-            <input type="text" id="relation" name="relation" required><br><br>
-
+        <h2>Add Birthday</h2>
+        <form onsubmit="saveBirthday(); return false;">
+            <input type="text" id="name" placeholder="Enter Name" required>
+            <input type="date" id="dob" required>
             <button type="submit">Add Birthday</button>
         </form>
-        
-        <button onclick="window.location.href='index.html';">Back to Home</button>
+        <a href="index.html">Go Back to Home</a>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
