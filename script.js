@@ -1,4 +1,3 @@
-// This code assumes you're using localStorage to save the birthday entries
 document.addEventListener("DOMContentLoaded", function() {
     // Add Birthday
     const form = document.getElementById("birthday-form");
@@ -15,9 +14,18 @@ document.addEventListener("DOMContentLoaded", function() {
             relation: relation
         };
 
+        // Get existing birthdays from localStorage or initialize as empty array
         let birthdays = JSON.parse(localStorage.getItem("birthdays")) || [];
+        
+        // Push new birthday to the list
         birthdays.push(birthday);
+
+        // Save updated list back to localStorage
         localStorage.setItem("birthdays", JSON.stringify(birthdays));
+
+        // Debugging: Check what's stored in localStorage
+        console.log("Birthday added:", birthday);
+        console.log("All Birthdays in localStorage:", birthdays);
 
         alert("Birthday added successfully!");
 
@@ -28,6 +36,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // Display Birthdays
     const birthdayListDiv = document.getElementById("birthday-list");
     const birthdays = JSON.parse(localStorage.getItem("birthdays")) || [];
+    
+    // Debugging: Check the retrieved list of birthdays
+    console.log("Retrieved Birthdays:", birthdays);
     
     if (birthdays.length === 0) {
         birthdayListDiv.innerHTML = "<p>No birthdays added yet!</p>";
