@@ -1,33 +1,42 @@
-// Load birthdays from LocalStorage
-let birthdays = JSON.parse(localStorage.getItem('birthdays')) || [];
+// This code assumes you're using localStorage to save the birthday entries
+document.addEventListener("DOMContentLoaded", function() {
+    // Add Birthday
+    const form = document.getElementById("birthday-form");
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        
+        const name = document.getElementById("name").value;
+        const dob = document.getElementById("dob").value;
+        const relation = document.getElementById("relation").value;
 
-// Handle the form submission on the "Add Birthday" page
-document.getElementById('addForm')?.addEventListener('submit', function(e) {
-    e.preventDefault();
+        const birthday = {
+            name: name,
+            dob: dob,
+            relation: relation
+        };
 
-    const name = document.getElementById('name').value;
-    const dob = new Date(document.getElementById('dob').value);
-    const month = document.getElementById('month').value;
+        let birthdays = JSON.parse(localStorage.getItem("birthdays")) || [];
+        birthdays.push(birthday);
+        localStorage.setItem("birthdays", JSON.stringify(birthdays));
 
-    // Add the new birthday to the array
-    birthdays.push({ name, dob, month });
+        alert("Birthday added successfully!");
 
-    // Save the updated list to LocalStorage
-    localStorage.setItem('birthdays', JSON.stringify(birthdays));
-
-    alert('Birthday added successfully!');
-});
-
-// Display birthdays for the selected month
-function showBirthdays(month) {
-    const filteredBirthdays = birthdays.filter(b => b.month == month);
-    filteredBirthdays.sort((a, b) => a.dob - b.dob); // Sort by date
-
-    let listHTML = '<ul>';
-    filteredBirthdays.forEach(birthday => {
-        listHTML += `<li>${birthday.name} - ${birthday.dob.toLocaleDateString()}</li>`;
+        // Reset form
+        form.reset();
     });
-    listHTML += '</ul>';
 
-    document.getElementById('birthdaysList').innerHTML = listHTML;
-}
+    // Display Birthdays
+    const birthdayListDiv = document.getElementById("birthday-list");
+    const birthdays = JSON.parse(localStorage.getItem("birthdays")) || [];
+    
+    if (birthdays.length === 0) {
+        birthdayListDiv.innerHTML = "<p>No birthdays added yet!</p>";
+    } else {
+        let listHTML = "<ul>";
+        birthdays.forEach(birthday => {
+            listHTML += `<li>${birthday.name} (${birthday.relation}) - ${birthday.dob}</li>`;
+        });
+        listHTML += "</ul>";
+        birthdayListDiv.innerHTML = listHTML;
+    }
+});
