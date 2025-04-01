@@ -1,49 +1,61 @@
-/* General Styling */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('https://img.freepik.com/premium-photo/birthday-background-with-balloons-cake-gifts_979520-53904.jpg');
+    height: 100%;
+    background: url('https://img.freepik.com/premium-photo/birthday-background-with-balloons-cake-gifts_979520-53904.jpg') no-repeat center center fixed;
     background-size: cover;
-    background-position: center;
-    color: white;
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #fff;
 }
 
-/* Container for centering content */
 .container {
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.5);  /* Slight background for readability */
     padding: 20px;
-    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
 }
 
-/* Form Styling */
-form {
-    margin: 20px 0;
+h1, h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
 }
 
-input[type="text"], input[type="date"] {
-    padding: 8px;
-    width: 100%;
-    max-width: 300px;
-    margin: 10px 0;
-    border-radius: 4px;
-    border: none;
+input, button {
+    padding: 10px;
+    font-size: 1em;
+    margin: 10px;
+    border-radius: 5px;
 }
 
 button {
-    padding: 10px 20px;
     background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
 }
 
 button:hover {
     background-color: #45a049;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+a:hover {
+    color: #ffeb3b;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
 }
